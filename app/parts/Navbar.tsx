@@ -9,12 +9,11 @@ import {
 } from "react-icons/md";
 import { IoMdCloseCircle, IoMdMenu } from "react-icons/io";
 import UserProfile from "./userProfile";
-import Chat from "./Chat";
-import Notification from "./Notification";
 import dynamic from "next/dynamic";
-import Apps from "./Apps";
+
 import { logo } from "../../public";
 import { navLinks } from "../../public/data";
+import MenuBar from "./MenuBar";
 
 interface NavbarProps {
   showComponent: string;
@@ -23,14 +22,11 @@ interface NavbarProps {
 
 const NavButton = dynamic(() => import("./NavButton"), { ssr: false });
 
-const Navbar: FC<NavbarProps> = ({ showComponent, setShowComponent }) => {
+const Navbar: FC<NavbarProps> = () => {
   const [active, setActive] = useState("Home");
   const [toggle, setToggle] = useState(false);
 
-  const { setActiveMenu, activeMenu, handleClick, isClicked, currentColor } =
-    useStateContext();
-
-  const handleActiveMenu = () => setActiveMenu(!activeMenu);
+  const { handleClick, isClicked, currentColor } = useStateContext();
 
   return (
     <div className="w-full">
@@ -38,36 +34,9 @@ const Navbar: FC<NavbarProps> = ({ showComponent, setShowComponent }) => {
         className={`w-[95%] h-[66px] mt-1 mx-auto flex py-6 px-16 max-sm:px-10 justify-between items-center fixed navbar inset-x-0 bg-white backdrop-filter backdrop-blur-xl bg-opacity-1 z-50 rounded-full shadow-md`}
       >
         <div className="bank__image">
-          <Image src={logo} alt="kalsa" className=" h-[40px]" />
+          <Image src={logo} alt="mainstack" className=" h-[40px]" />
         </div>
-
-        <ul className="list-none flex sm:hidden xs:hidden md:flex lg:flex items-center">
-          {navLinks.map((nav, index) => (
-            <li
-              key={nav.id}
-              onClick={() => {
-                nav.title === "Apps"
-                  ? handleClick("apps")
-                  : setShowComponent(nav.title);
-              }}
-              className={` font-normal cursor-pointer  ${
-                nav.title === "crm" ? "uppercase" : "capitalize"
-              } text-[14px] ${
-                index === navLinks.length - 1 ? "mr-0" : "mr-10"
-              } ${
-                (showComponent === nav.title && nav.title == "Apps") ||
-                (isClicked.apps && nav.title === "Apps")
-                  ? "text-white bg-black rounded-full px-6 py-2"
-                  : "text-black"
-              } mr-10`}
-            >
-              <div className="flex items-center gap-1">
-                {nav.icons}
-                <span>{nav.title}</span>
-              </div>
-            </li>
-          ))}
-        </ul>
+        <MenuBar handleClick={handleClick} />
 
         <div className="no-underline items-center gap-4 flex sm:hidden xs:hidden md:flex lg:flex font-larsseit">
           <NavButton
@@ -150,10 +119,8 @@ const Navbar: FC<NavbarProps> = ({ showComponent, setShowComponent }) => {
           </div>
         </div>
       </nav>
-      {isClicked.chat && <Chat />}
-      {isClicked.notification && <Notification />}
-      {isClicked.profile && <UserProfile />}
-      {isClicked.apps && <Apps />}
+
+      {isClicked?.profile && <UserProfile />}
     </div>
   );
 };

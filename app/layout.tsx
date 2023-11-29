@@ -3,7 +3,7 @@ import { Poppins } from "next/font/google";
 
 import { ContextProvider } from "./context/contextProvider";
 
-const inter = Poppins({ subsets: ["latin"], weight: "500" });
+const inter = Poppins({ subsets: ["latin"], weight: "400" });
 
 export const metadata = {
   title: "Create Next App",

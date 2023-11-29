@@ -11,7 +11,7 @@ interface INavButtonProps {
   title: string;
   customFunc: () => void;
   icon: ReactNode;
-  color: string;
+  color: string | undefined;
   dotColor?: string; // Optional prop
 }
 

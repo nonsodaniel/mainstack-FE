@@ -8,7 +8,7 @@ import Sidebar from "../components/sidebar";
 const Page = () => {
   const [showComponent, setShowComponent] = useState("revenue");
 
-  const renderContent = (component: any) => (
+  return (
     <div className="w-full overflow-hidden">
       <div className={` w-full overflow-x-auto`}>
         <div className=" navbar overflow-x-auto mx-auto  ">
@@ -19,20 +19,8 @@ const Page = () => {
         </div>
         <Sidebar />
       </div>
-
-      {/* Rendering the selected component here */}
-      {component}
-    </div>
-  );
-
-  return renderContent(
-    showComponent === "home" ||
-      showComponent === "analytics" ||
-      showComponent === "crm" ? (
-      <Analytics />
-    ) : (
       <Revenue />
-    )
+    </div>
   );
 };
 

@@ -17,22 +17,22 @@ import { vector1, vector2, vector3, vector4 } from ".";
 export const navLinks = [
   {
     id: 1,
-    title: "home",
+    title: "Home",
     icons: <IoHomeOutline />,
   },
   {
     id: 2,
-    title: "analytics",
+    title: "Analytics",
     icons: <TbBrandGoogleAnalytics />,
   },
   {
     id: 3,
-    title: "revenue",
+    title: "Revenue",
     icons: <FaRegMoneyBillAlt />,
   },
   {
     id: 4,
-    title: "crm",
+    title: "CRM",
     icons: <AiOutlineUsergroupAdd />,
   },
   {
@@ -44,11 +44,11 @@ export const navLinks = [
 
 export const navButtons = [
   {
-    id: "home",
+    id: "Home",
     title: "Home",
   },
   {
-    id: "features",
+    id: "Features",
     title: "Features",
   },
 ];
@@ -191,17 +191,17 @@ export const AppsData = [
   {
     image: vector1,
     message: "Link in bio",
-    desc: "manage your link in bio",
+    desc: "Manage your link in bio",
   },
   {
     image: vector2,
     message: "Store",
-    desc: "manage your store activities",
+    desc: "Manage your store activities",
   },
   {
     image: vector4,
     message: "Media kit",
-    desc: "manage your media kit",
+    desc: "Manage your media kit",
   },
   {
     image: vector4,
