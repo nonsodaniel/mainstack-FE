@@ -11,3 +11,19 @@ export interface UserWalletData {
   pending_payout: number;
   ledger_balance: number;
 }
+
+interface TransactionMetadata {
+  name: string;
+  type: string;
+  email: string;
+  quantity: number;
+  country: string;
+}
+export interface UserTransactionData {
+  amount: number;
+  metadata: TransactionMetadata;
+  payment_reference: string;
+  status: string;
+  type: string;
+  date: string;
+}

@@ -1,19 +1,20 @@
+import { UserTransactionData } from "@/lib/types";
 import React from "react";
 import { GoArrowDownLeft } from "react-icons/go";
 import { MdArrowOutward } from "react-icons/md";
 
 const TransactionItem = ({
-  name,
+  metadata,
   amount,
   status,
   date,
-  isSuccessful,
-  isPending,
-  transactionType,
-}) => {
+  type,
+}: UserTransactionData) => {
   // Determing the icon based on the transaction type
+  const isSuccessful = status === "successful";
+  const isPending = status === "pending";
   const getTransactionIcon = () => {
-    if (transactionType === "incoming") {
+    if (type === "deposit") {
       return (
         <GoArrowDownLeft
           className={`text-2xl ${
@@ -21,7 +22,7 @@ const TransactionItem = ({
           }`}
         />
       );
-    } else if (transactionType === "outgoing") {
+    } else if (type === "withdrawal") {
       return (
         <MdArrowOutward
           className={`text-2xl ${
@@ -44,7 +45,7 @@ const TransactionItem = ({
           {getTransactionIcon()}
         </span>
         <div>
-          <p className="font-bold">{name}</p>
+          <p className="font-bold">{metadata?.name}</p>
           <p
             className={`text-sm ${
               isSuccessful

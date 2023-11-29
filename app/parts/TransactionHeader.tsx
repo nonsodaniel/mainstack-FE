@@ -2,12 +2,19 @@
 import React from "react";
 import { FaFilter, FaDownload } from "react-icons/fa";
 import Filter from "./Filter/Filter";
+import { UserTransactionData } from "@/lib/types";
 
-const TransactionHeader = () => {
+interface ITransactionHeaderProps {
+  data: UserTransactionData[];
+}
+
+const TransactionHeader = (data: ITransactionHeaderProps) => {
   return (
     <div className="flex  flex-wrap items-center justify-between border-b-2 overflow-x-auto  border-[#EFF1F6] p-4">
       <div className="flex flex-col items-start ">
-        <span className="text-[24px] font-bold">24 Transactions</span>
+        <span className="text-[24px] font-bold">
+          {data.data.length} Transactions
+        </span>
         <span className="text-[14px] text-[#56616B]">
           Your transactions for the last 7 days
         </span>

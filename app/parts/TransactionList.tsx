@@ -1,8 +1,12 @@
 import React from "react";
 import TransactionItem from "@/components/TransactionItem";
-import { transactions } from "@/public/data";
+import { UserTransactionData } from "@/lib/types";
 
-const TransactionList = () => {
+interface ITransactionsProps {
+  transactions: UserTransactionData[];
+}
+
+const TransactionList = ({ transactions }: ITransactionsProps) => {
   return (
     <div className="w-full">
       {transactions.map((transaction, index) => (
