@@ -9,8 +9,14 @@ import Overview from "./Overview";
 import RecentSales from "./RecentSales";
 import TransactionHeader from "./TransactionHeader";
 import TransactionList from "./TransactionList";
+import { UserTransactionData } from "@/lib/types";
+import { transactionURL } from "@/lib/constants";
+import useFetch from "@/hooks/useFetch";
 
 export default function Revenue() {
+  const { data, loading, error } =
+    useFetch<UserTransactionData[]>(transactionURL);
+  if (!data) return null;
   return (
     <div className="mt-32 w-full md:w-[90%] mx-auto">
       <div className="w-full lg:w-[80%] mx-auto flex-col md:flex shadow-none">
@@ -40,8 +46,8 @@ export default function Revenue() {
             </CardContent>
           </Card>
         </div>
-        <TransactionHeader />
-        <TransactionList />
+        <TransactionHeader data={data} />
+        <TransactionList transactions={data} />
       </div>
     </div>
   );
