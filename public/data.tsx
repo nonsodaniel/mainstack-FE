@@ -53,7 +53,7 @@ export const navButtons = [
   },
 ];
 
-export const userProfileData = [
+export const userProfileList = [
   {
     icon: <MdOutlineSettings />,
     title: "My Profile",

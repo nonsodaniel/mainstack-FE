@@ -3,11 +3,14 @@ import React from "react";
 import { MdOutlineCancel } from "react-icons/md";
 
 import Button from "./Button";
-import { userProfileData } from "@/public/data";
-import { useStateContext } from "../context/contextProvider";
+import { userProfileList } from "@/public/data";
+import { userURL } from "@/lib/constants";
+import useFetch from "@/hooks/useFetch";
+import { UserProfileData } from "@/lib/types";
 
 const UserProfile = () => {
-  const { currentColor } = useStateContext();
+  const { data, loading, error } = useFetch<UserProfileData>(userURL);
+  if (!data) return null;
 
   return (
     <div className="nav-item fixed right-1 top-20  bg-white  p-4  w-96 z-50  max-w-[320px] rounded-xl  sidebar shadow-2xl">
@@ -26,17 +29,15 @@ const UserProfile = () => {
         </div>
         <div>
           <p className="font-semibold text-md dark:text-gray-200">
-            {" "}
-            Anoja Jane{" "}
+            {data.first_name} {data.last_name}
           </p>
           <p className="text-gray-500 text-sm font-semibold dark:text-gray-400">
-            {" "}
-            info@user.com{" "}
+            {data.email}
           </p>
         </div>
       </div>
       <div>
-        {userProfileData.map((item, index) => (
+        {userProfileList.map((item, index) => (
           <div
             key={index}
             className="flex gap-3 border-b-1 border-color p-4 hover:bg-gray-500 cursor-pointer "
