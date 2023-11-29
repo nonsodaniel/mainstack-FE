@@ -1,7 +1,8 @@
 import React from "react";
 import { render, screen, waitFor } from "@testing-library/react";
-import UserProfile from "@/app/parts/userProfile";
+
 import { userProfileList } from "@/public/data";
+import UserProfile from "@/app/parts/userProfile";
 
 jest.mock("../hooks/useFetch", () => ({
   __esModule: true,

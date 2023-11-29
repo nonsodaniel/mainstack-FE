@@ -30,7 +30,7 @@ const TransactionItem = ({
       return (
         <MdArrowOutward
           className={`text-2xl ${
-            isSuccessful ? "text-[#075132]" : "text-[#961100]"
+            metadata?.name ? "text-[#075132]" : "text-[#961100]"
           }`}
         />
       );
@@ -52,14 +52,10 @@ const TransactionItem = ({
           {getTransactionIcon()}
         </span>
         <div>
-          <p className="font-bold">{metadata?.name}</p>
+          <p className="font-bold">{metadata?.name || "-"}</p>
           <p
             className={`text-sm ${
-              isSuccessful
-                ? "text-[#0EA163]"
-                : isPending
-                ? "text-[#A77A07]"
-                : "text-[#961100]"
+              metadata?.name ? "text-[#0EA163]" : "text-[#961100]"
             }`}
           >
             {status}
@@ -69,8 +65,8 @@ const TransactionItem = ({
 
       {/* Transaction Amount and Date */}
       <div className="flex flex-col text-right">
-        <p className="font-bold text-md lg:text-xl">{amount}</p>
-        <p className="text-sm">{date}</p>
+        <p className="font-extrabold text-sm ">{amount}</p>
+        <p className="text-xs">{date}</p>
       </div>
     </div>
   );

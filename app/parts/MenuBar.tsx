@@ -23,7 +23,10 @@ const MenuBar = ({ handleClick }: any) => {
               key={nav.id}
               className={`font-normal cursor-pointer hover:bg-[#EFF1F6]
              rounded-full py-2 px-3  text-[14px] 
-             ${nav.title === "Revenue" && "bg-black text-white"} 
+             ${
+               nav.title === "Revenue" &&
+               "bg-black text-white hover:bg-black hover:text-white"
+             } 
               ${
                 isAppsClicked &&
                 nav.title === "Apps" &&

@@ -5,8 +5,6 @@ import { useStateContext } from "@/app/context/contextProvider";
 const DynamicSparkLine = dynamic(() => import("./Chart"), { ssr: false });
 
 const Overview = () => {
-  const { currentColor } = useStateContext();
-
   return (
     <div className="flex flex-wrap justify-center">
       <div className="border-r-1 border-color mx-2  w-full">
@@ -18,7 +16,7 @@ const Overview = () => {
           </div>
 
           <div className="">
-            <button className="px-5 py-2 lg:px-12 lg:py-4  text-sm lg:text-lg bg-black text-white hover:text-gray-600 rounded-full">
+            <button className="px-5 py-2 lg:px-12 lg:py-4  text-sm lg:text-lg bg-black text-white  rounded-full">
               Withdraw
             </button>
           </div>
