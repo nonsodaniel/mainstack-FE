@@ -1,8 +1,10 @@
-import { UserProfileData } from "@/lib/types";
+import { UserProfileData, UserWalletData } from "@/lib/types";
 import { useState, useEffect } from "react";
 
 const useFetch = (url: string) => {
-  const [data, setData] = useState<UserProfileData | null>(null);
+  const [data, setData] = useState<UserProfileData | UserWalletData | null>(
+    null
+  );
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
