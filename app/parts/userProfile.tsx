@@ -5,8 +5,8 @@ import { MdOutlineCancel } from "react-icons/md";
 import Button from "./Button";
 import { userProfileList } from "@/public/data";
 import { userURL } from "@/lib/constants";
-import useFetch from "@/hooks/useFetch";
 import { UserProfileData } from "@/lib/types";
+import useFetch from "@/hooks/useFetch";
 
 const UserProfile = () => {
   const { data, loading, error } = useFetch<UserProfileData>(userURL);

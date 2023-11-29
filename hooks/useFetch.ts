@@ -1,16 +1,15 @@
-import {
-  UserProfileData,
-  UserTransactionData,
-  UserWalletData,
-} from "@/lib/types";
 import { useState, useEffect } from "react";
 
-const useFetch = (url: string) => {
-  const [data, setData] = useState<
-    UserProfileData | UserWalletData | UserTransactionData[] | null
-  >(null);
+interface FetchResult<T> {
+  data: T | null;
+  loading: boolean;
+  error: Error | null;
+}
+
+const useFetch = <T>(url: string): FetchResult<T> => {
+  const [data, setData] = useState<T | null>(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<Error | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -24,7 +23,7 @@ const useFetch = (url: string) => {
         setData(result);
         setLoading(false);
       } catch (error) {
-        setError(error.message);
+        setError(error instanceof Error ? error : new Error("Unknown error"));
         setLoading(false);
       }
     };
