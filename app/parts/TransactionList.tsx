@@ -10,7 +10,7 @@ const TransactionList = ({ transactions }: ITransactionsProps) => {
   return (
     <div className="w-full">
       {transactions.map((transaction, index) => (
-        <TransactionItem key={index} {...transaction} />
+        <TransactionItem key={index} index={index} {...transaction} />
       ))}
     </div>
   );

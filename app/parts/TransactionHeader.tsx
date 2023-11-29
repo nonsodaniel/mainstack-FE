@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { FaFilter, FaDownload } from "react-icons/fa";
+import { FaDownload } from "react-icons/fa";
 import Filter from "./Filter/Filter";
 import { UserTransactionData } from "@/lib/types";
 
@@ -20,9 +20,12 @@ const TransactionHeader = (data: ITransactionHeaderProps) => {
         </span>
       </div>
       <div className="flex items-center space-x-4 text-black font-medium pt-4">
-        <span className="flex items-center px-6 cursor-pointer py-4 rounded-full bg-[#EFF1F6] whitespace-nowrap">
+        <div
+          className="flex items-center px-6 cursor-pointer py-4 rounded-full bg-[#EFF1F6] whitespace-nowrap"
+          data-testid="filter-container"
+        >
           <Filter />
-        </span>
+        </div>
         <span className="flex items-center cursor-pointer space-x-2  px-5 py-4 rounded-full bg-[#EFF1F6] whitespace-nowrap">
           <span>Export List</span>
           <FaDownload />

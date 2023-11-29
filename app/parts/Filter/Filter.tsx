@@ -18,11 +18,10 @@ import { IoIosArrowDown } from "react-icons/io";
 
 export default function Filter() {
   return (
-    <Sheet>
+    <Sheet data-testid="filter-sheet">
       <SheetTrigger style={{ display: "flex" }}>
         <span className="flex flex-row gap-2">
-          {" "}
-          Filter{" "}
+          Filter
           <IoIosArrowDown
             style={{ paddingTop: "0.2rem", fontSize: "1.2rem" }}
           />

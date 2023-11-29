@@ -2,6 +2,9 @@ import { UserTransactionData } from "@/lib/types";
 import React from "react";
 import { GoArrowDownLeft } from "react-icons/go";
 import { MdArrowOutward } from "react-icons/md";
+interface ITransactionItemProps extends UserTransactionData {
+  index: number;
+}
 
 const TransactionItem = ({
   metadata,
@@ -9,7 +12,8 @@ const TransactionItem = ({
   status,
   date,
   type,
-}: UserTransactionData) => {
+  index,
+}: ITransactionItemProps) => {
   // Determing the icon based on the transaction type
   const isSuccessful = status === "successful";
   const isPending = status === "pending";
@@ -34,7 +38,10 @@ const TransactionItem = ({
   };
 
   return (
-    <div className="flex items-center justify-between bg-white p-4 mb-4 rounded ">
+    <div
+      className="flex items-center justify-between bg-white p-4 mb-4 rounded"
+      data-testid={`transaction-item-${index + 1}`}
+    >
       <div className="flex items-center space-x-4">
         <span
           className={`p-3 ${
