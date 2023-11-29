@@ -5,11 +5,11 @@ import Analytics from "./parts/Analytics";
 import { useState } from "react";
 import Sidebar from "../components/sidebar";
 
-const Page = () => {
+const Home = () => {
   const [showComponent, setShowComponent] = useState("revenue");
 
   return (
-    <div className="w-full overflow-hidden">
+    <div className="w-full overflow-hidden" data-testid="Home">
       <div className={` w-full overflow-x-auto`}>
         <div className=" navbar overflow-x-auto mx-auto  ">
           <Navbar
@@ -24,4 +24,4 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default Home;

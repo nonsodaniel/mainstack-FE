@@ -41,16 +41,23 @@ const UserProfile = () => {
           <div
             key={index}
             className="flex gap-3 border-b-1 border-color p-4 hover:bg-gray-500 cursor-pointer "
+            data-testid={`nav-container-${index}`}
           >
             <button
               type="button"
               className="  rounded-lg p-1  hover:bg-light-gray"
+              data-testid={`nav-icon-${index}`}
             >
               {item.icon}
             </button>
 
             <div>
-              <p className=" dark:text-gray-200 ">{item.title}</p>
+              <p
+                className=" dark:text-gray-200"
+                data-testid={`nav-title-${index}`}
+              >
+                {item.title}
+              </p>
             </div>
           </div>
         ))}
