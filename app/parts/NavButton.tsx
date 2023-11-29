@@ -9,7 +9,7 @@ import {
 
 interface INavButtonProps {
   title: string;
-  customFunc: () => void;
+  customFunc?: () => void;
   icon: ReactNode;
   color: string | undefined;
   dotColor?: string; // Optional prop
@@ -28,7 +28,7 @@ const NavButton = ({
         <TooltipTrigger>
           <button
             type="button"
-            onClick={() => customFunc()}
+            onClick={() => customFunc?.()}
             style={{ color }}
             className="text-xl rounded-full p-3 hover:bg-light-gray"
           >
