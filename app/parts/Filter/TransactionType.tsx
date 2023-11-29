@@ -8,10 +8,12 @@ const TransactionType = () => {
   const [selected, setSelected] = useState([]);
 
   const initialOption = [
-    { label: "Store Transaction", value: "Get Tipped" },
+    { label: "Store Transaction", value: "Store Transaction" },
+    { label: "Get Tipped", value: "Get Tipped" },
     { label: "Withdrawals", value: "Withdrawals" },
     { label: "Chargebacks", value: "Chargebacks" },
-    { label: "Others", value: "Others" },
+    { label: "Cashbacks", value: "Cashbacks" },
+    { label: "Refer and Earn", value: "Refer and Earn" },
   ];
 
   const onSubmit = (data: any) => {
@@ -26,7 +28,7 @@ const TransactionType = () => {
       >
         <label
           htmlFor="inputState"
-          className="col-form-label text-md text-black font-semibold"
+          className="col-form-label text-sm text-black font-extrabold"
         >
           Transaction Type
         </label>

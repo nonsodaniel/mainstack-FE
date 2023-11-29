@@ -9,7 +9,7 @@ export default function RecentSales() {
 
   return (
     <div className="space-y-14 shadow-none">
-      <div className="flex items-center pt-20">
+      <div className="flex items-center justify-between  pt-20">
         <div className="ml-4 space-y-4">
           <p className="text-sm text-muted-foreground">Ledger</p>
           <p className="text-2xl font-extrabold leading-none">

@@ -74,12 +74,12 @@ const MenuBar = ({ handleClick }: any) => {
           <>
             <MenubarContent
               style={{ width: "26rem", marginTop: "1.5rem" }}
-              className="nonso border-none"
+              className="nonso border-none rounded-md"
             >
               {AppsData?.map((item, index) => (
                 <div
                   key={index}
-                  className="flex items-center cursor-pointer hover:shadow-md hover:rounded-md  gap-2  border-color px-4 py-4 mx-2"
+                  className="flex items-center cursor-pointer hover:shadow-md hover:rounded-md  gap-2  border-color px-4 py-5 mx-2"
                 >
                   <div className="border border-gray-200 rounded-md">
                     <Image
@@ -93,9 +93,8 @@ const MenuBar = ({ handleClick }: any) => {
                     <p className="font-semibold dark:text-gray-200">
                       {item.message}
                     </p>
-                    <p className="text-gray-500 font-extralight text-sm dark:text-gray-400">
-                      {" "}
-                      {item.desc}{" "}
+                    <p className="text-gray-500 font-light text-sm dark:text-gray-400">
+                      {item.desc}
                     </p>
                   </div>
                 </div>

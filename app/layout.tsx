@@ -1,10 +1,10 @@
 import "./globals.css";
-import { Poppins } from "next/font/google";
+import { Inter, Poppins } from "next/font/google";
 
 import { ContextProvider } from "./context/contextProvider";
 import { ReactNode } from "react";
 
-const inter = Poppins({ subsets: ["latin"], weight: "400" });
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Create Next App",

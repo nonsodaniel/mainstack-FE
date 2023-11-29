@@ -24,14 +24,14 @@ const UserProfile = () => {
         />
       </div>
       <div className="flex gap-5 items-center mt-6 border-color border-b-1 pb-6">
-        <div className="w-10 h-10 flex items-center justify-center cursor-pointer bg-[#2D3B43] text-white rounded-full font-bold text-xl">
+        <div className="w-10 h-10 flex items-center justify-center cursor-pointer bg-[#2D3B43] text-white rounded-full font-bold text-xl mt-1">
           AJ
         </div>
         <div>
-          <p className="font-semibold text-md dark:text-gray-200">
+          <p className="font-semibold text-sm dark:text-gray-200">
             {data.first_name} {data.last_name}
           </p>
-          <p className="text-gray-500 text-sm font-semibold dark:text-gray-400">
+          <p className="text-gray-500 text-xs font-semibold dark:text-gray-400">
             {data.email}
           </p>
         </div>
