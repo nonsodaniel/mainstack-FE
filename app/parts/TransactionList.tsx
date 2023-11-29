@@ -2,14 +2,14 @@ import React from "react";
 import TransactionItem from "@/components/TransactionItem";
 import { UserTransactionData } from "@/lib/types";
 
-interface ITransactionsProps {
+interface TransactionListProps {
   transactions: UserTransactionData[];
 }
 
-const TransactionList = ({ transactions }: ITransactionsProps) => {
+const TransactionList = ({ transactions }: TransactionListProps) => {
   return (
     <div className="w-full">
-      {transactions.map((transaction, index) => (
+      {transactions.map((transaction: UserTransactionData, index: number) => (
         <TransactionItem key={index} index={index} {...transaction} />
       ))}
     </div>

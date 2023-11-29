@@ -16,7 +16,18 @@ const TransactionItem = ({
 }: ITransactionItemProps) => {
   // Determing the icon based on the transaction type
   const isSuccessful = status === "successful";
-  const isPending = status === "pending";
+
+  const userName = metadata?.name;
+  const productName = metadata?.product_name;
+  const nameValue = type === "deposit" ? productName : `Cash ${type}`;
+  const subNameValue = type === "deposit" ? userName : status;
+
+  const statusColor =
+    type === "withdrawal"
+      ? "text-[#0EA163]"
+      : type === "deposit"
+      ? "text-black"
+      : "text-[#961100]";
   const getTransactionIcon = () => {
     if (type === "deposit") {
       return (
@@ -30,7 +41,7 @@ const TransactionItem = ({
       return (
         <MdArrowOutward
           className={`text-2xl ${
-            metadata?.name ? "text-[#075132]" : "text-[#961100]"
+            isSuccessful ? "text-[#075132]" : "text-[#961100]"
           }`}
         />
       );
@@ -52,21 +63,35 @@ const TransactionItem = ({
           {getTransactionIcon()}
         </span>
         <div>
-          <p className="font-bold">{metadata?.name || "-"}</p>
           <p
-            className={`text-sm ${
-              metadata?.name ? "text-[#0EA163]" : "text-[#961100]"
-            }`}
+            className="font-light text-sm"
+            data-testid={`transaction-name-${index + 1}`}
           >
-            {status}
+            {nameValue || userName}
+          </p>
+          <p
+            className={`text-xs font-light ${statusColor}`}
+            data-testid={`transaction-username-${index + 1}`}
+          >
+            {subNameValue}
           </p>
         </div>
       </div>
 
       {/* Transaction Amount and Date */}
       <div className="flex flex-col text-right">
-        <p className="font-extrabold text-sm ">{amount}</p>
-        <p className="text-xs">{date}</p>
+        <p
+          className="font-extrabold text-sm"
+          data-testid={`transaction-amount-${index + 1}`}
+        >
+          USD {amount}
+        </p>
+        <p
+          className="text-xs font-light"
+          data-testid={`transaction-date-${index + 1}`}
+        >
+          {date}
+        </p>
       </div>
     </div>
   );

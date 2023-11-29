@@ -18,11 +18,13 @@ interface TransactionMetadata {
   email: string;
   quantity: number;
   country: string;
+  product_name?: string;
 }
+
 export interface UserTransactionData {
   amount: number;
   metadata: TransactionMetadata;
-  payment_reference: string;
+  payment_reference?: string;
   status: string;
   type: string;
   date: string;

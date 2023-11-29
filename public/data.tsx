@@ -13,6 +13,7 @@ import { TbBrandGoogleAnalytics } from "react-icons/tb";
 import { AiOutlineUsergroupAdd } from "react-icons/ai";
 import { GrAppsRounded } from "react-icons/gr";
 import { vector1, vector2, vector3, vector4 } from ".";
+import { UserTransactionData } from "@/lib/types";
 
 export const navLinks = [
   {
@@ -113,7 +114,7 @@ export const SparklineAreaData = [
   { x: 5, yval: 10 },
 ];
 
-export const transactions = [
+export const transactions: UserTransactionData[] | any[] = [
   {
     amount: 500,
     metadata: {
