@@ -1,7 +1,6 @@
 "use client";
 import Navbar from "./parts/Navbar";
 import Revenue from "./parts/Revenue";
-import Analytics from "./parts/Analytics";
 import { useState } from "react";
 import Sidebar from "../components/sidebar";
 

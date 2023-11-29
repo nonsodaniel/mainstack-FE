@@ -42,7 +42,7 @@ export default function CalendarPicker() {
     },
   });
 
-  function onSubmit(data) {
+  function onSubmit(data: any) {
     toast({
       title: "You submitted the following values:",
       description: (
@@ -86,7 +86,8 @@ export default function CalendarPicker() {
                     <Calendar
                       mode="single"
                       selected={field.value}
-                      onSelect={(date) => form.setValue("fromDate", date)}
+                      //@ts-ignore
+                      onSelect={(date: Date) => form.setValue("fromDate", date)}
                       disabled={(date) =>
                         date > new Date() || date < new Date("1900-01-01")
                       }
@@ -127,6 +128,7 @@ export default function CalendarPicker() {
                     <Calendar
                       mode="single"
                       selected={field.value}
+                      //@ts-ignore
                       onSelect={(date) => form.setValue("toDate", date)}
                       disabled={(date) =>
                         date > new Date() || date < new Date("1900-01-01")

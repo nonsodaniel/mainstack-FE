@@ -5,6 +5,8 @@ import React, {
   useState,
   FC,
   ReactNode,
+  Dispatch,
+  SetStateAction,
 } from "react";
 
 interface ContextProviderProps {
@@ -15,26 +17,28 @@ interface State {
   currentColor: string;
   currentMode: string;
   activeMenu: boolean;
-  screenSize: any; // Replace with the appropriate type for screenSize
+  screenSize: string;
   themeSettings: boolean;
-  isClicked: Record<string, boolean>;
+  isClicked?: Record<string, boolean>;
+  handleClick?: (clicked: string) => void;
+  setScreenSize?: Dispatch<SetStateAction<any>>;
+  setCurrentColor?: Dispatch<SetStateAction<any>>;
+  setCurrentMode?: Dispatch<SetStateAction<any>>;
+  setMode?: Dispatch<SetStateAction<any>>;
+  setColor?: Dispatch<SetStateAction<any>>;
+  setThemeSettings?: Dispatch<SetStateAction<any>>;
+  setIsClicked?: Dispatch<SetStateAction<any>>;
 }
-
-const StateContext = createContext<Partial<State>>({}); // You can replace `Partial<State>` with a more specific type if needed
-
 const initialState: State = {
   currentColor: "black",
   currentMode: "Light",
   activeMenu: true,
-  screenSize: undefined, // Replace with the appropriate type for screenSize
+  screenSize: "undefined",
   themeSettings: false,
-  isClicked: {
-    chat: false,
-    menu: false,
-    profile: false,
-    notification: false,
-  },
+  isClicked: {},
 };
+
+const StateContext = createContext<Partial<State>>(initialState);
 
 export const ContextProvider: FC<ContextProviderProps> = ({ children }) => {
   const [screenSize, setScreenSize] = useState<any>(undefined); // Replace with the appropriate type for screenSize
@@ -42,9 +46,12 @@ export const ContextProvider: FC<ContextProviderProps> = ({ children }) => {
   const [currentMode, setCurrentMode] = useState<string>("Light");
   const [themeSettings, setThemeSettings] = useState<boolean>(false);
   const [activeMenu, setActiveMenu] = useState<boolean>(true);
-  const [isClicked, setIsClicked] = useState<Record<string, boolean>>(
-    initialState.isClicked
-  );
+  const [isClicked, setIsClicked] = useState<Record<string, boolean>>({
+    chat: false,
+    menu: false,
+    profile: false,
+    notification: false,
+  });
 
   const setMode = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCurrentMode(e.target.value);
@@ -59,7 +66,13 @@ export const ContextProvider: FC<ContextProviderProps> = ({ children }) => {
   };
 
   const handleClick = (clicked: string) =>
-    setIsClicked({ ...initialState.isClicked, [clicked]: true });
+    setIsClicked({
+      chat: false,
+      menu: false,
+      profile: false,
+      notification: false,
+      [clicked]: true,
+    });
 
   return (
     <StateContext.Provider
@@ -70,10 +83,10 @@ export const ContextProvider: FC<ContextProviderProps> = ({ children }) => {
         screenSize,
         setScreenSize,
         handleClick,
-        isClicked,
-        initialState,
         setIsClicked,
-        setActiveMenu,
+        isClicked,
+        //@ts-ignore
+        initialState,
         setCurrentColor,
         setCurrentMode,
         setMode,

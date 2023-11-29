@@ -3,7 +3,8 @@ import { useForm, Controller } from "react-hook-form";
 import { MultiSelectComponent } from "@/lib/utils";
 
 const TransactionType = () => {
-  const { handleSubmit, control, reset, register, errors } = useForm();
+  //@ts-ignore
+  const { handleSubmit, control, errors } = useForm();
   const [selected, setSelected] = useState([]);
 
   const initialOption = [
@@ -13,7 +14,7 @@ const TransactionType = () => {
     { label: "Others", value: "Others" },
   ];
 
-  const onSubmit = (data) => {
+  const onSubmit = (data: any) => {
     console.log(data);
   };
 
@@ -40,8 +41,10 @@ const TransactionType = () => {
           }}
           render={({ field }) => (
             <MultiSelectComponent
+              //@ts-ignore
               options={initialOption}
               value={field.value || []}
+              //@ts-ignore
               onChange={(selected) => {
                 setSelected(selected);
                 field.onChange(selected);

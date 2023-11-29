@@ -5,20 +5,23 @@ import MultiSelect from "react-multi-select-component";
 import React from "react";
 import Image from "next/image";
 
-export function cn(...inputs) {
+export function cn(...inputs: (string | boolean | undefined)[]) {
   return twMerge(clsx(inputs));
 }
 
 // MultiSelect Setup
+//@ts-ignore
 const MultiSelectComponent = React.forwardRef(({ options, ...rest }, ref) => {
   return (
     <>
+      {/* @ts-ignore */}
       <MultiSelect options={options} ref={ref} {...rest} />
     </>
   );
 });
 
 // Helper component to handle image hover effect
+//@ts-ignore
 const GrayToColorImage = ({ img, className }) => {
   return (
     <div className={`relative ${className}`}>
