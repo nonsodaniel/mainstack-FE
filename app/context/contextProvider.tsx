@@ -29,6 +29,7 @@ interface State {
   setThemeSettings?: Dispatch<SetStateAction<any>>;
   setIsClicked?: Dispatch<SetStateAction<any>>;
 }
+
 const initialState: State = {
   currentColor: "black",
   currentMode: "Light",
@@ -38,7 +39,8 @@ const initialState: State = {
   isClicked: {},
 };
 
-const StateContext = createContext<Partial<State>>(initialState);
+const StateContext =
+  createContext<Partial<State & { initialState: State }>>(initialState);
 
 export const ContextProvider: FC<ContextProviderProps> = ({ children }) => {
   const [screenSize, setScreenSize] = useState<any>(undefined); // Replace with the appropriate type for screenSize
@@ -85,8 +87,6 @@ export const ContextProvider: FC<ContextProviderProps> = ({ children }) => {
         handleClick,
         setIsClicked,
         isClicked,
-        //@ts-ignore
-        initialState,
         setCurrentColor,
         setCurrentMode,
         setMode,

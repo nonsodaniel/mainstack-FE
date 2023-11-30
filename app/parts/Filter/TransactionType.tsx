@@ -1,13 +1,25 @@
 import React, { useState } from "react";
-import { useForm, Controller } from "react-hook-form";
+import { useForm, Controller, FieldValues } from "react-hook-form";
 import { MultiSelectComponent } from "@/lib/utils";
 
+interface OptionType {
+  label: string;
+  value: string;
+}
+interface FormData {
+  transactionType: string[];
+}
 const TransactionType = () => {
-  //@ts-ignore
-  const { handleSubmit, control, errors } = useForm();
-  const [selected, setSelected] = useState([]);
+  const {
+    handleSubmit,
+    control,
+    setError,
+    formState: { errors },
+  } = useForm<FormData>();
 
-  const initialOption = [
+  const [selected, setSelected] = useState<OptionType[]>([]);
+
+  const initialOption: OptionType[] = [
     { label: "Store Transaction", value: "Store Transaction" },
     { label: "Get Tipped", value: "Get Tipped" },
     { label: "Withdrawals", value: "Withdrawals" },
@@ -16,7 +28,7 @@ const TransactionType = () => {
     { label: "Refer and Earn", value: "Refer and Earn" },
   ];
 
-  const onSubmit = (data: any) => {
+  const onSubmit = (data: FieldValues) => {
     console.log(data);
   };
 
@@ -35,7 +47,7 @@ const TransactionType = () => {
         <Controller
           control={control}
           name="transactionType"
-          defaultValue=""
+          defaultValue={[]}
           rules={{
             validate: (value) =>
               value.length > 0 || "Please select at least a transaction type",
@@ -44,11 +56,9 @@ const TransactionType = () => {
           render={({ field }) => (
             <MultiSelectComponent
               options={initialOption}
-              // @ts-ignore TODO:
               value={field.value || []}
-              //@ts-ignore TODO:
               onChange={(selected) => {
-                setSelected(selected);
+                setSelected(selected as OptionType[]);
                 field.onChange(selected);
               }}
               labelledBy={"Select"}
@@ -57,8 +67,8 @@ const TransactionType = () => {
             />
           )}
         />
-        {errors?.selected && (
-          <span className="error">{errors?.selected.message}</span>
+        {errors?.transactionType && (
+          <span className="error">{errors?.transactionType.message}</span>
         )}
       </form>
     </div>

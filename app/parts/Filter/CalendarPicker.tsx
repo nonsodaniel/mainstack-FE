@@ -86,8 +86,9 @@ export default function CalendarPicker() {
                     <Calendar
                       mode="single"
                       selected={field.value}
-                      //@ts-ignore
-                      onSelect={(date: Date) => form.setValue("fromDate", date)}
+                      onSelect={(date, day, event) =>
+                        form.setValue("fromDate", date as Date)
+                      }
                       disabled={(date) =>
                         date > new Date() || date < new Date("1900-01-01")
                       }
@@ -128,8 +129,11 @@ export default function CalendarPicker() {
                     <Calendar
                       mode="single"
                       selected={field.value}
-                      //@ts-ignore
-                      onSelect={(date) => form.setValue("toDate", date)}
+                      onSelect={(date, day, event) => {
+                        if (date) {
+                          form.setValue("fromDate", date);
+                        }
+                      }}
                       disabled={(date) =>
                         date > new Date() || date < new Date("1900-01-01")
                       }

@@ -1,30 +1,51 @@
-"use client";
 import { clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 import MultiSelect from "react-multi-select-component";
-import React, { forwardRef, Ref, HTMLAttributes } from "react";
+import React, {
+  ForwardedRef,
+  forwardRef,
+  Ref,
+  HTMLAttributes,
+  MutableRefObject,
+} from "react";
 import Image, { ImageProps } from "next/image";
 
 export function cn(...inputs: (string | boolean | undefined)[]) {
   return twMerge(clsx(inputs));
 }
 
-// MultiSelect Setup
+interface MultiSelectComponentProps {
+  options: any[];
+  value: any[]; // Adjust the type as needed
+  onChange: (selected: any[]) => void;
+  labelledBy: string;
+  name: string;
+  className?: string;
+}
+
 const MultiSelectComponent = forwardRef<
   HTMLDivElement,
-  {
-    options: any[];
-  }
->(({ options, ...rest }, ref) => {
+  MultiSelectComponentProps & HTMLAttributes<HTMLDivElement>
+>((props, forwardedRef) => {
+  const { options, value, onChange, labelledBy, name, className, ...rest } =
+    props;
+
   return (
     <>
-      {/* @ts-ignore */}
-      <MultiSelect options={options} ref={ref} {...rest} />
+      <MultiSelect
+        options={options}
+        value={value}
+        onChange={onChange}
+        labelledBy={labelledBy}
+        {...rest}
+        // @ts-ignore
+        ref={forwardedRef}
+        className={className}
+      />
     </>
   );
 });
 
-// Helper component to handle image hover effect
 interface GrayToColorImageProps {
   img: string;
   className?: string;

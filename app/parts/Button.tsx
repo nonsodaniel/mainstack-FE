@@ -23,7 +23,6 @@ const Button = ({
   borderRadius,
   width,
 }: IButtonProps) => {
-  //@ts-ignore
   const { setIsClicked, initialState } = useStateContext();
 
   return (
