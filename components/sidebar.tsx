@@ -12,7 +12,10 @@ import { BsFileFill } from "react-icons/bs";
 
 const Sidebar = () => {
   return (
-    <div className="flex flex-col items-center gap-5 p-3 fixed sm:left-0 z-50  left-10 top-[50%] bottom-3rem rounded-full bg-white shadow-xl">
+    <div
+      className="flex flex-col items-center gap-5 p-3 fixed z-50 sm:ml-[-2rem]  left-10 top-[50%] bottom-3rem rounded-full bg-white shadow-xl"
+      style={{ marginLeft: "-2rem" }}
+    >
       <TooltipProvider>
         <Tooltip>
           <TooltipTrigger>
