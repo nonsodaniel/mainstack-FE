@@ -14,6 +14,7 @@ import Image from "next/image";
 
 const NavbarMenuBar = ({ handleClick }: any) => {
   const [isAppsClicked, setIsAppsClicked] = useState(false);
+
   return (
     <Menubar className="border-none shadow-none">
       <MenubarMenu>
@@ -38,7 +39,10 @@ const NavbarMenuBar = ({ handleClick }: any) => {
                   setIsAppsClicked(!isAppsClicked);
                 }
               }}
-              onMouseLeave={() => handleClick("")}
+              onMouseLeave={() => {
+                // setIsAppsClicked(false);
+                handleClick("");
+              }}
             >
               {nav.title === "Apps" ? (
                 <MenubarTrigger
@@ -71,36 +75,38 @@ const NavbarMenuBar = ({ handleClick }: any) => {
               )}
             </li>
           ))}
-          <>
-            <MenubarContent
-              style={{ width: "26rem", marginTop: "1.5rem" }}
-              className="nonso border-none rounded-md"
-            >
-              {AppsData?.map((item, index) => (
-                <div
-                  key={index}
-                  className="flex items-center cursor-pointer hover:shadow-md hover:rounded-md  gap-2  border-color px-4 py-5 mx-2"
-                >
-                  <div className="border border-gray-200 rounded-md">
-                    <Image
-                      className="rounded-full h-10 w-10"
-                      src={item.image}
-                      alt={item.message}
-                    />
-                  </div>
+          {isAppsClicked && (
+            <>
+              <MenubarContent
+                style={{ width: "26rem", marginTop: "1.5rem" }}
+                className="nonso border-none rounded-md"
+              >
+                {AppsData?.map((item, index) => (
+                  <div
+                    key={index}
+                    className="flex items-center cursor-pointer hover:shadow-md hover:rounded-md  gap-2  border-color px-4 py-5 mx-2"
+                  >
+                    <div className="border border-gray-200 rounded-md">
+                      <Image
+                        className="rounded-full h-10 w-10"
+                        src={item.image}
+                        alt={item.message}
+                      />
+                    </div>
 
-                  <div>
-                    <p className="font-semibold dark:text-gray-200">
-                      {item.message}
-                    </p>
-                    <p className="text-gray-500 font-light text-sm dark:text-gray-400">
-                      {item.desc}
-                    </p>
+                    <div>
+                      <p className="font-semibold dark:text-gray-200">
+                        {item.message}
+                      </p>
+                      <p className="text-gray-500 font-light text-sm dark:text-gray-400">
+                        {item.desc}
+                      </p>
+                    </div>
                   </div>
-                </div>
-              ))}
-            </MenubarContent>
-          </>
+                ))}
+              </MenubarContent>
+            </>
+          )}
         </ul>
       </MenubarMenu>
     </Menubar>
