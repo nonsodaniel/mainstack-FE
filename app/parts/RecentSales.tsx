@@ -28,7 +28,7 @@ export default function RecentSales() {
             USD {formatCurrency(data.total_payout)}
           </p>
         </div>
-        <div className="ml-auto font-medium">
+        <div className="ml-auto block font-medium ">
           <CiCircleInfo />
         </div>
       </div>

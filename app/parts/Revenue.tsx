@@ -31,7 +31,7 @@ export default function Revenue() {
             </CardContent>
           </Card>
           <Card
-            className="lg:col-span-2 md-col-span-2 sm:col-span-4 xs:col-span-4   shadow-none"
+            className="md:col-span-2 col-span-4  shadow-none"
             style={{ border: "none", borderRadius: "0px" }}
           >
             <CardContent>

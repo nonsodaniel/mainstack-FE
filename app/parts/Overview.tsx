@@ -1,8 +1,5 @@
 "use client";
 import React from "react";
-import dynamic from "next/dynamic";
-import { useStateContext } from "@/app/context/contextProvider";
-// const DynamicSparkLine = dynamic(() => import("./Charts"), { ssr: false });
 import Charts from "./Charts";
 
 const Overview = () => {
@@ -23,7 +20,7 @@ const Overview = () => {
           </div>
         </div>
 
-        <div className="mt-3 w-full">
+        <div className=" w-full  border-l-2 border-gray-200">
           <Charts />
         </div>
       </div>
