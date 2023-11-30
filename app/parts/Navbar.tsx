@@ -53,7 +53,7 @@ const Navbar: FC<NavbarProps> = () => {
               !toggle ? "hidden" : "block"
             } p-6 bg-white absolute top-20 right-0 mx-4 my-2 min-w-[260px] rounded-xl  sidebar shadow-2xl`}
           >
-            <ul className="list-none flex justify-end items-start flex-1 flex-col">
+            <ul className="list-none flex justify-end items-start flex-1 flex-col py-5">
               {navLinks.map((nav, index) => {
                 const IconComponent = nav.icons;
                 return (

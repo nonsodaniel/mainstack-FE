@@ -7,5 +7,5 @@ export const formatCurrency = (amount: number) =>
   amount?.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
 
 export const getNameInitials = (firstName: string, lastName: string) => {
-  return `${firstName.split("")[0]} ${lastName.split("")[0]}`;
+  return firstName.split("")[0] + lastName.split("")[0];
 };

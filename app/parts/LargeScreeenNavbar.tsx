@@ -8,11 +8,9 @@ import {
   MenubarTrigger,
 } from "@/components/ui/menubar";
 import NavButton from "./NavButton";
-import {
-  MdChatBubbleOutline,
-  MdNotificationsNone,
-  MdOutlineFormatLineSpacing,
-} from "react-icons/md";
+import { MdOutlineFormatLineSpacing } from "react-icons/md";
+import { BsChatLeftText } from "react-icons/bs";
+import { IoNotificationsOutline } from "react-icons/io5";
 
 const LargeScreeenNavbar = ({
   currentColor,
@@ -24,16 +22,16 @@ const LargeScreeenNavbar = ({
   return (
     <Menubar className="border-none shadow-none ">
       <MenubarMenu>
-        <div className="no-underline items-center gap-4 flex sm:hidden xs:hidden md:flex lg:flex font-larsseit">
+        <div className="no-underline items-center gap-4 md:flex hidden  font-larsseit">
           <NavButton
             title="Notifications"
             color={currentColor}
-            icon={<MdNotificationsNone />}
+            icon={<IoNotificationsOutline />}
           />
           <NavButton
             title="Chat"
             color={currentColor}
-            icon={<MdChatBubbleOutline />}
+            icon={<BsChatLeftText />}
           />
           <div className="flex items-center bg-[#EFF1F6] rounded-full pr-2 pl-1 ">
             <div className="w-9 h-9 flex items-center justify-center cursor-pointer bg-[#2D3B43] text-white rounded-full font-bold text-xl">

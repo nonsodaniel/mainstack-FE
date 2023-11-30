@@ -8,11 +8,9 @@ import {
   MenubarTrigger,
 } from "@/components/ui/menubar";
 import NavButton from "./NavButton";
-import {
-  MdChatBubbleOutline,
-  MdNotificationsNone,
-  MdOutlineFormatLineSpacing,
-} from "react-icons/md";
+import { MdOutlineFormatLineSpacing } from "react-icons/md";
+import { BsChatLeftText } from "react-icons/bs";
+import { IoNotificationsOutline } from "react-icons/io5";
 
 const MobileScreenNavbar = ({
   currentColor,
@@ -40,12 +38,12 @@ const MobileScreenNavbar = ({
           <NavButton
             title="Notifications"
             color={currentColor}
-            icon={<MdNotificationsNone />}
+            icon={<IoNotificationsOutline />}
           />
           <NavButton
             title="Chat"
             color={currentColor}
-            icon={<MdChatBubbleOutline />}
+            icon={<BsChatLeftText />}
           />
         </div>
         <MenubarContent className="border-none rounded-md mr-12 mt-2 w-96">

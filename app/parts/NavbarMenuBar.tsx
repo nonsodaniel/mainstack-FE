@@ -17,7 +17,7 @@ const NavbarMenuBar = ({ handleClick }: any) => {
   return (
     <Menubar className="border-none shadow-none">
       <MenubarMenu>
-        <ul className="list-none flex sm:hidden xs:hidden md:flex lg:flex items-center">
+        <ul className="list-none hidden md:flex  items-center">
           {navLinks.map((nav, index) => (
             <li
               key={nav.id}
