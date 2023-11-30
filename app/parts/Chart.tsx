@@ -1,12 +1,12 @@
 "use client";
-import React, { Component } from "react";
+import React, { useEffect } from "react";
 import CanvasJSReact from "@canvasjs/react-charts";
 
+const CanvasJSChart = CanvasJSReact.CanvasJSChart;
 var CanvasJS = CanvasJSReact.CanvasJS;
-var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
-class Chart extends Component {
-  render() {
+const Chart = () => {
+  useEffect(() => {
     const options = {
       animationEnabled: true,
       theme: "light2",
@@ -31,8 +31,6 @@ class Chart extends Component {
           type: "spline",
           showInLegend: false,
           color: "#FF5403",
-
-          // legendText: "MWp = one megawatt peak",
           dataPoints: [
             { x: new Date(2017, 0, 1), y: 100 },
             { x: new Date(2017, 1, 1), y: 135 },
@@ -50,15 +48,16 @@ class Chart extends Component {
       ],
     };
 
-    return (
-      <div>
-        <CanvasJSChart
-          options={options}
-          /* onRef={ref => this.chart = ref} */
-        />
-      </div>
-    );
-  }
-}
+    const chart = new CanvasJS.Chart("chartContainer", options);
+    chart.render();
+
+    return () => {
+      // Cleanup if needed
+      chart.destroy();
+    };
+  }, []); // Empty dependency array ensures useEffect runs only once on mount
+
+  return <div id="chartContainer" />;
+};
 
 export default Chart;
