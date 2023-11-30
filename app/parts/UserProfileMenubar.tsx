@@ -12,8 +12,9 @@ import { SlArrowDown } from "react-icons/sl";
 import { AppsData, navLinks } from "../../public/data";
 import Image from "next/image";
 
-const MenuBar = ({ handleClick }: any) => {
+const UserProfileMenubar = ({ handleClick }: any) => {
   const [isAppsClicked, setIsAppsClicked] = useState(false);
+
   return (
     <Menubar className="border-none shadow-none">
       <MenubarMenu>
@@ -107,4 +108,4 @@ const MenuBar = ({ handleClick }: any) => {
   );
 };
 
-export default MenuBar;
+export default UserProfileMenubar;

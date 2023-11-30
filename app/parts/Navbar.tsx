@@ -2,65 +2,47 @@
 import React, { FC, useState } from "react";
 import Image from "next/image";
 import { useStateContext } from "../context/contextProvider";
-import {
-  MdChatBubbleOutline,
-  MdNotificationsNone,
-  MdOutlineFormatLineSpacing,
-} from "react-icons/md";
-import { IoMdCloseCircle, IoMdMenu } from "react-icons/io";
 
-import dynamic from "next/dynamic";
+import { IoMdCloseCircle, IoMdMenu } from "react-icons/io";
 
 import { logo } from "../../public";
 import { navLinks } from "../../public/data";
-import MenuBar from "./MenuBar";
-import UserProfile from "./userProfile";
+import NavbarMenuBar from "./NavbarMenuBar";
+
+import LargeScreeenNavbar from "./LargeScreeenNavbar";
+import MobileScreenNavbar from "./MobileScreenNavbar";
+import { getNameInitials, userURL } from "@/lib/constants";
+import { UserProfileData } from "@/lib/types";
+import useFetch from "@/hooks/useFetch";
 
 interface NavbarProps {
   showComponent: string;
   setShowComponent: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const NavButton = dynamic(() => import("./NavButton"), { ssr: false });
-
 const Navbar: FC<NavbarProps> = () => {
   const [active, setActive] = useState("Home");
   const [toggle, setToggle] = useState(false);
 
-  const { handleClick, isClicked, currentColor } = useStateContext();
+  const { handleClick, currentColor } = useStateContext();
+  const { data } = useFetch<UserProfileData>(userURL);
+  if (!data) return null;
+
+  const nameInitial = getNameInitials(data.first_name, data.last_name);
 
   return (
-    <div className="w-full">
+    <div className="w-full relative">
       <nav
         className={`w-[95%] h-[66px] mt-1 mx-auto flex py-6 px-16 max-sm:px-10 justify-between items-center fixed navbar inset-x-0 bg-white backdrop-filter backdrop-blur-xl bg-opacity-1 z-50 rounded-full shadow-md`}
       >
         <div className="bank__image">
           <Image src={logo} alt="mainstack" className=" h-[40px]" />
         </div>
-        <MenuBar handleClick={handleClick} />
-
-        <div className="no-underline items-center gap-4 flex sm:hidden xs:hidden md:flex lg:flex font-larsseit">
-          <NavButton
-            title="Notifications"
-            color={currentColor}
-            icon={<MdNotificationsNone />}
-          />
-          <NavButton
-            title="Chat"
-            color={currentColor}
-            icon={<MdChatBubbleOutline />}
-          />
-          <div className="flex bg-[#EFF1F6] rounded-full px-2 py-1 gap-1">
-            <div className="w-10 h-10 flex items-center justify-center cursor-pointer bg-[#2D3B43] text-white rounded-full font-bold text-xl">
-              AJ
-            </div>
-            <NavButton
-              title="Profile"
-              color={currentColor}
-              icon={<MdOutlineFormatLineSpacing />}
-            />
-          </div>
-        </div>
+        <NavbarMenuBar handleClick={handleClick} />
+        <LargeScreeenNavbar
+          currentColor={currentColor}
+          nameInitial={nameInitial}
+        />
 
         <div className="md:hidden flex flex-1 justify-end items-center">
           <span className="text-4xl" onClick={() => setToggle(!toggle)}>
@@ -93,31 +75,14 @@ const Navbar: FC<NavbarProps> = () => {
                 );
               })}
             </ul>
-            <div className="no-underline items-center md:flex   flex bg-[#EFF1F6] rounded-full px-2 py-1 gap-1 mt-4">
-              <div className="w-10 h-10 flex items-center justify-center cursor-pointer bg-[#2D3B43] text-white rounded-full font-bold text-xl">
-                AJ
-              </div>
-              <NavButton
-                title="Profile"
-                color={currentColor}
-                icon={<MdOutlineFormatLineSpacing />}
-              />
-              <NavButton
-                title="Notifications"
-                color={currentColor}
-                icon={<MdNotificationsNone />}
-              />
-              <NavButton
-                title="Chat"
-                color={currentColor}
-                icon={<MdChatBubbleOutline />}
-              />
-            </div>
+
+            <MobileScreenNavbar
+              currentColor={currentColor}
+              nameInitial={nameInitial}
+            />
           </div>
         </div>
       </nav>
-
-      {isClicked?.profile && <UserProfile />}
     </div>
   );
 };

@@ -8,8 +8,7 @@ import { transactionURL } from "@/lib/constants";
 import useFetch from "@/hooks/useFetch";
 
 export default function Revenue() {
-  const { data, loading, error } =
-    useFetch<UserTransactionData[]>(transactionURL);
+  const { data } = useFetch<UserTransactionData[]>(transactionURL);
   if (!data) return null;
   return (
     <div className="mt-32 w-full md:w-[90%] mx-auto">
@@ -32,7 +31,7 @@ export default function Revenue() {
             </CardContent>
           </Card>
           <Card
-            className="col-span-2  shadow-none"
+            className="lg:col-span-2 md-col-span-2 sm:col-span-4 xs:col-span-4   shadow-none"
             style={{ border: "none", borderRadius: "0px" }}
           >
             <CardContent>
