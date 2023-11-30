@@ -14,6 +14,7 @@ import { AiOutlineUsergroupAdd } from "react-icons/ai";
 import { GrAppsRounded } from "react-icons/gr";
 import { vector1, vector2, vector3, vector4 } from ".";
 import { UserTransactionData } from "@/lib/types";
+import { LuUsers } from "react-icons/lu";
 
 export const navLinks = [
   {
@@ -34,7 +35,7 @@ export const navLinks = [
   {
     id: 4,
     title: "CRM",
-    icons: <AiOutlineUsergroupAdd />,
+    icons: <LuUsers />,
   },
   {
     id: 5,

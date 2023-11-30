@@ -7,8 +7,8 @@ import {
 } from "@/components/ui/tooltip";
 import { FaFolder } from "react-icons/fa";
 import { FaLink } from "react-icons/fa6";
-import { FaShare } from "react-icons/fa6";
 import { LiaFileInvoiceDollarSolid } from "react-icons/lia";
+import { BsFileFill } from "react-icons/bs";
 
 const Sidebar = () => {
   return (
@@ -23,7 +23,7 @@ const Sidebar = () => {
 
         <Tooltip>
           <TooltipTrigger>
-            <FaShare className="filter text-2xl grayscale hover:text-[#FF5403] hover:filter-none cursor-pointer transition duration-300" />
+            <BsFileFill className=" text-2xl  grayscale hover:text-[#FF5403] hover:filter-none cursor-pointer transition duration-300" />
           </TooltipTrigger>
           <TooltipContent>Share</TooltipContent>
         </Tooltip>

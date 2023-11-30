@@ -8,9 +8,9 @@ import {
   MenubarTrigger,
 } from "@/components/ui/menubar";
 import NavButton from "./NavButton";
-import { MdOutlineFormatLineSpacing } from "react-icons/md";
 import { BsChatLeftText } from "react-icons/bs";
 import { IoNotificationsOutline } from "react-icons/io5";
+import { RxHamburgerMenu } from "react-icons/rx";
 
 const LargeScreeenNavbar = ({
   currentColor,
@@ -42,7 +42,7 @@ const LargeScreeenNavbar = ({
               <NavButton
                 title="Profile"
                 color={currentColor}
-                icon={<MdOutlineFormatLineSpacing />}
+                icon={<RxHamburgerMenu />}
               />
             </MenubarTrigger>
           </div>
