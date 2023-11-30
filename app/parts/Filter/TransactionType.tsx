@@ -43,10 +43,10 @@ const TransactionType = () => {
           }}
           render={({ field }) => (
             <MultiSelectComponent
-              //@ts-ignore
               options={initialOption}
+              // @ts-ignore TODO:
               value={field.value || []}
-              //@ts-ignore
+              //@ts-ignore TODO:
               onChange={(selected) => {
                 setSelected(selected);
                 field.onChange(selected);
